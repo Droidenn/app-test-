@@ -1,0 +1,17 @@
+name: test123
+
+on: push
+
+jobs:
+    name: Lint code base
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: go test ./...
+
+      
+  - name: Run Code test
+  uses: CGO_ENABLED=0 GOOS=<os> GOARCH=<arch> go build -o endpoint -o build/endpoint main.go
+        env:
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
